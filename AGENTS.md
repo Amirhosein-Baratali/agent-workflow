@@ -105,6 +105,9 @@ design unless new evidence changes it; then say what changed.
   non-destructive verification.
 - Ask before destructive actions, external writes, pushes, deployments, production operations, or
   any scope expansion.
+- When a step is authorized and your tools can do it (shell, browser pane), do it yourself instead
+  of handing the user commands. Hand over only passwords, 2FA, account-security settings, and
+  approvals.
 - Never stage or commit during implementation. Present the verified result, then require a fresh
   explicit commit request; "implement and commit" up front does not bypass this (`COMMIT.md`).
 
