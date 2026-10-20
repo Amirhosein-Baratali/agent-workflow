@@ -23,6 +23,7 @@ After approval:
    repository usable; split unrelated purposes without splitting a required behavior from its test.
 6. Use the project's required message format and author identity. If none exists, propose a clear
    imperative message; use Conventional Commits only when the project adopts it or the user asks.
+   Never add AI co-author trailers (such as `Co-Authored-By: Claude`) unless the user asks.
 
 If safe selective staging is impossible because existing changes overlap the same hunks, stop and
 ask.
