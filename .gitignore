@@ -1,0 +1,4 @@
+# Private project profiles: never published.
+profiles/*
+!profiles/README.md
+.DS_Store
