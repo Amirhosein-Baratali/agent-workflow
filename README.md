@@ -38,7 +38,7 @@ A review loads only `REVIEW.md`. A simple question loads nothing extra.
 On a new computer:
 
 ```bash
-git clone https://github.com/<github-user>/agent-workflow.git ~/agent-workflow
+git clone https://github.com/Amirhosein-Baratali/agent-workflow.git ~/agent-workflow
 ~/agent-workflow/install.sh
 ```
 
