@@ -72,6 +72,7 @@ actionable findings, say so and name remaining coverage gaps; never manufacture 
 
 Draft MR/PR comments for teammates one at a time for approval, each a one-line title with severity,
 one or two sentences of why, and a one-line ask. Keep the evidence in the chat, not the comment.
+Write every MR/PR comment in English, even when the chat is in Persian.
 
 For an MR/PR readiness review, end with exactly one verdict:
 
