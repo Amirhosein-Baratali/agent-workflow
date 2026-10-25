@@ -5,8 +5,8 @@ merge unless the user separately authorizes that action.
 
 ## Establish Review Scope
 
-1. Identify the intended base/head or exact local diff. Do not assume the base when it affects the
-   result.
+1. Identify the intended base/head or exact diff; fetch and diff against `origin/<base>`, since a
+   stale local base pulls in already-merged commits.
 2. Read the MR/PR description and linked issue when available. If no direct link exists, look
    for the task ID in the branch or a task-related comment.
 3. Extract acceptance criteria and non-goals. If the contract is unavailable and expected behavior
@@ -20,9 +20,8 @@ The user must fully understand the change before seeing findings. Review in two 
 1. **Explain.** In plain words, say what the change does, how the main flow works now (entry point
    to result), and what changed compared to before. Keep it short; name the key files. Then stop
    and wait until the user says they understand or asks questions.
-2. **Findings.** Only after that, give the findings below.
-
-Skip step 1 only when the user asks for findings directly.
+2. **Findings.** Only after that, give the findings below. Skip step 1 only when the user asks
+   for findings directly.
 
 ## Review in Risk Order
 
@@ -35,8 +34,7 @@ Start with the change's overall design and highest-risk path, then inspect files
 - concurrency, cancellation, ordering, races, and resource cleanup;
 - lifecycle, state restoration, navigation, and error/empty/loading behavior;
 - architectural and dependency boundaries;
-- performance on hot paths and large collections;
-- accessibility and UI state coverage when relevant;
+- performance on hot paths; accessibility and UI state coverage when relevant;
 - tests that prove meaningful success and failure/regression cases.
 
 Trace directly affected contracts, call sites, and tests beyond the diff when needed. Do not scan
@@ -45,8 +43,8 @@ unrelated modules or run a full build by default.
 ## Finding Quality Bar
 
 Report a finding only when it is actionable and supported by a concrete triggering scenario.
-Validate it against actual types, call paths, platform behavior, or tests; do not submit speculative
-"maybe" comments.
+Validate it against actual types, call paths, platform behavior, or tests; no speculative "maybe"
+comments. Calling code redundant needs the invariant and the line that establishes it.
 
 Each finding is a few lines:
 
@@ -70,9 +68,10 @@ hide risk.
 In step 2, list findings by severity, then open questions and a short verification note. With no
 actionable findings, say so and name remaining coverage gaps; never manufacture a finding.
 
-Draft MR/PR comments for teammates one at a time for approval, each a one-line title with severity,
-one or two sentences of why, and a one-line ask. Keep the evidence in the chat, not the comment.
-Write every MR/PR comment in English, even when the chat is in Persian.
+Draft MR/PR comments in English, one at a time for approval: severity, one or two short sentences
+of why, a one-line ask, evidence kept in the chat. Name the diff line to post on; add a
+`suggestion:-X+Y` block for small fixes (it only reaches lines next to that one). Put the final
+text on the clipboard with `pbcopy`: copying rendered chat breaks the Markdown.
 
 For an MR/PR readiness review, end with exactly one verdict:
 
