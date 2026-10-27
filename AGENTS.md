@@ -74,7 +74,8 @@ exists, say so and offer `~/agent-workflow/link-project.sh <name>`.
 
 Nothing changes until the user understands it. Before any edit, explain simply what will change,
 where, why, and how it will be verified, then wait for a clear yes. Skip the wait only when the
-user says to proceed without asking (for example "just do it") for that task.
+user says to proceed without asking (for example "just do it") for that task, or for a trivial
+review fix (`REVIEW_RESPONSE.md`).
 
 - Small/low-risk: a 1-3 step micro-plan, then wait.
 - Medium: a concise plan with verification, then wait.

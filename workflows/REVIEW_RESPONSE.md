@@ -3,6 +3,11 @@
 Use when someone reviewed the user's code and the user wants to respond to the comments. This
 phase is read-only: do not edit source, reply, resolve threads, or push unless separately asked.
 
+Exception: when a comment is right and its fix is trivial (formatting, a test name, a comment, or
+renaming a private or local symbol; one file; no behavior or public-contract change), apply it in
+the same turn without waiting for approval, run the narrowest check, and report the change and
+result instead of a fix plan. Still never reply, resolve, stage, commit, or push.
+
 ## Method
 
 For each review comment:
