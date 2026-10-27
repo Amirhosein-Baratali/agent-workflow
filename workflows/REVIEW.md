@@ -68,10 +68,10 @@ hide risk.
 In step 2, list findings by severity, then open questions and a short verification note. With no
 actionable findings, say so and name remaining coverage gaps; never manufacture a finding.
 
-Draft MR/PR comments in English, one at a time for approval: severity, one or two short sentences
-of why, a one-line ask, evidence kept in the chat. Name the diff line to post on; add a
-`suggestion:-X+Y` block for small fixes (it only reaches lines next to that one). Put the final
-text on the clipboard with `pbcopy`: copying rendered chat breaks the Markdown.
+Draft MR/PR comments in English, one at a time for approval: one or two short sentences of why
+and a one-line ask; severity and evidence stay in chat, never in the comment. Name the diff line
+to post on; add a `suggestion:-X+Y` block for small fixes (it only reaches lines next to that
+one). Put the final text on the clipboard with `pbcopy`: copying rendered chat breaks the Markdown.
 
 For an MR/PR readiness review, end with exactly one verdict:
 
