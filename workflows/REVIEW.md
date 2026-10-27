@@ -72,6 +72,7 @@ Draft MR/PR comments in English, one at a time for approval: one or two short se
 and a one-line ask; severity and evidence stay in chat, never in the comment. Name the diff line
 to post on; add a `suggestion:-X+Y` block for small fixes (it only reaches lines next to that
 one). Put the final text on the clipboard with `pbcopy`: copying rendered chat breaks the Markdown.
+Always run it as `LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 pbcopy`, or non-ASCII text is garbled.
 
 For an MR/PR readiness review, end with exactly one verdict:
 
