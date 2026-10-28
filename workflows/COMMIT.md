@@ -31,6 +31,8 @@ ask.
 ## Commit Execution
 
 - Stage explicit task files/hunks only; never broad-stage a dirty tree blindly.
+- New files the task created belong in the commit: `git add` each one, since an untracked task file
+  in `git status` is a miss. If the IDE already staged a task file, leave it staged.
 - Inspect the staged diff before committing.
 - Commit without rewriting unrelated history.
 - Verify the resulting commit author, subject, included files, and remaining working tree.
