@@ -20,6 +20,11 @@ work.
 
 - Implement the smallest complete behavior that satisfies the current slice.
 - Follow existing boundaries, contracts, naming, DI, error handling, and test patterns.
+- Write each failure path once: helpers throw the one exception type the caller already catches,
+  so no caller needs two catch blocks. Use full words in names (no `ikm`, `len`), keep comments to
+  the why, and name arguments whose meaning is unclear at the call site. Name an unused catch
+  parameter `_`. No magic values: put algorithm names and sizes in named constants, and build
+  error messages from those constants.
 - Reuse before introducing a new abstraction or dependency. Extend the existing event, state, UI
   control, or test instead of adding a parallel one (for example, never a second button for one
   action).
