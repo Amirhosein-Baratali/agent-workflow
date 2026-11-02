@@ -6,7 +6,8 @@ merge unless the user separately authorizes that action.
 ## Establish Review Scope
 
 1. Identify the intended base/head or exact diff; fetch and diff against `origin/<base>`, since a
-   stale local base pulls in already-merged commits.
+   stale local base pulls in already-merged commits. On a re-review, also diff against the commit
+   last reviewed: it may have been amended since, so review that delta, not the old verdict.
 2. Read the MR/PR description and linked issue when available. If no direct link exists, look
    for the task ID in the branch or a task-related comment.
 3. Extract acceptance criteria and non-goals. If the contract is unavailable and expected behavior
@@ -51,7 +52,7 @@ Each finding is a few lines:
 - severity (`P0` critical through `P3` low) and a short title;
 - file and tight line range;
 - one or two plain sentences: what breaks, when, and the impact;
-- one line of fix direction.
+- one line of fix direction, naming any test that pins the current behavior (it may be intended).
 
 Prioritize bugs over style. Mention style only when it violates an authoritative project rule or
 materially harms maintainability. Keep praise and summaries separate from findings so they do not
@@ -74,8 +75,6 @@ to post on; add a `suggestion:-X+Y` block for small fixes (it only reaches lines
 one). Put the final text on the clipboard with `pbcopy`: copying rendered chat breaks the Markdown.
 Always run it as `LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 pbcopy`, or non-ASCII text is garbled.
 
-For an MR/PR readiness review, end with exactly one verdict:
-
-- **Approve**: no actionable findings.
-- **Approve with nits**: only non-blocking P3 improvements.
-- **Request changes**: any blocking finding or missing contract that prevents a reliable verdict.
+For an MR/PR readiness review, end with exactly one verdict: **Approve** (no actionable findings),
+**Approve with nits** (only non-blocking P3 improvements), or **Request changes** (any blocking
+finding or missing contract that prevents a reliable verdict).
