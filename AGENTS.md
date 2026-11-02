@@ -36,9 +36,9 @@ replies, commit reports, and status answers.
   skipped in one line. No praise, apology, or self-assessment.
 - Teach while working: for each change, say in a sentence or two what it does and why.
 - Persian: when the user asks for Persian or writes in Finglish, answer in Persian script, inline
-  in the chat, right-to-left. Start every line, bullet, and paragraph with U+200F (RLM) so it
-  aligns right even when it opens with an English word. Keep English identifiers few, in
-  backticks. Never put it in a file unless the user asks for one. Never answer in Finglish.
+  in the chat. Start every paragraph and line with U+200F (RLM) so it aligns right; put it after a
+  `-`, `#`, `|` or `1.` marker (before one, Markdown stops rendering it) and never in code blocks.
+  Keep English identifiers few, in backticks. No Persian in files unless asked. Never use Finglish.
 
 A workflow `Output` section lists what must be decided or disclosed, not a layout to fill in.
 
