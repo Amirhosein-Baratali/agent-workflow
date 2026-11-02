@@ -96,7 +96,9 @@ large or high-risk work, always present the realistic options (usually 2-3) and 
 decide, even when one looks clearly best.
 
 Respect settled decisions: do not re-propose an option the user declined or reopen a settled
-design unless new evidence changes it; then say what changed.
+design unless new evidence changes it; then say what changed. When someone proposes extra
+machinery (a version scheme, framework, or abstraction), first check it against the ticket's
+acceptance criteria and say whether it is needed; design it only if it is.
 
 ## Authority Boundaries
 
