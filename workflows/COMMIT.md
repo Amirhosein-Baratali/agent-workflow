@@ -21,6 +21,9 @@ After approval:
 4. Confirm verification is still applicable to the exact diff.
 5. Determine logical commit grouping. One commit should represent one coherent purpose and keep the
    repository usable; split unrelated purposes without splitting a required behavior from its test.
+   When one change is split into several commits, build and test each intermediate commit on its
+   own (a temporary index and a temporary worktree), not only the final tree; a file shared by two
+   commits may need intermediate content.
 6. Use the project's required message format and author identity. If none exists, propose a clear
    imperative message; use Conventional Commits only when the project adopts it or the user asks.
    Never add AI co-author trailers (such as `Co-Authored-By: Claude`) unless the user asks.
@@ -30,13 +33,21 @@ ask.
 
 ## Commit Execution
 
-- Stage explicit task files/hunks only; never broad-stage a dirty tree blindly.
+- Stage explicit task files/hunks only; never broad-stage a dirty tree blindly. When the index
+  already holds the user's own staged changes, commit by path instead (`git commit [--amend] --
+  <paths>`): only those paths go in, and the user's files stay staged and out of the commit.
 - New files the task created belong in the commit: `git add` each one, since an untracked task file
   in `git status` is a miss. If the IDE already staged a task file, leave it staged.
 - Inspect the staged diff before committing.
 - Commit without rewriting unrelated history.
 - Verify the resulting commit author, subject, included files, and remaining working tree.
 - Do not amend, rebase, squash, force-push, or push without separate explicit authorization.
+- `git add -p` is unavailable. To commit only some hunks of a file, build the commit in a temporary
+  index (`GIT_INDEX_FILE=<tmp> git read-tree HEAD`, then `git apply --cached` the hunks), commit
+  from it, then `git reset -q -- <paths>` the real index.
+- Before an authorized push, `git fetch` and compare with the remote branch: another session may
+  have pushed or rewritten it, so a note that force is needed can be stale. Push fast-forward only;
+  a force push (always `--force-with-lease`) needs its own approval.
 
 ## Handoff
 
