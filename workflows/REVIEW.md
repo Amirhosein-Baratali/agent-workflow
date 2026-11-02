@@ -54,9 +54,8 @@ Each finding is a few lines:
 - one or two plain sentences: what breaks, when, and the impact;
 - one line of fix direction, naming any test that pins the current behavior (it may be intended).
 
-Prioritize bugs over style. Mention style only when it violates an authoritative project rule or
-materially harms maintainability. Keep praise and summaries separate from findings so they do not
-hide risk.
+Prioritize bugs over style: style is a finding only if it breaks a project rule or materially harms
+maintainability. Keep praise and summaries apart from findings so they do not hide risk.
 
 ## Review Verification
 
@@ -66,8 +65,9 @@ hide risk.
 
 ## Output
 
-In step 2, list findings by severity, then open questions and a short verification note. With no
-actionable findings, say so and name remaining coverage gaps; never manufacture a finding.
+In step 2, list findings by severity, then one line per quality question (safety, performance,
+other parts affected, tests before release, simplicity, comments and names), open questions, and
+a verification note. With no actionable findings, say so and name coverage gaps; never invent one.
 
 Draft MR/PR comments in English, one at a time for approval: one or two short sentences of why
 and a one-line ask; severity and evidence stay in chat, never in the comment. Name the diff line

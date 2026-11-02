@@ -61,6 +61,10 @@ For large work, stop after the first slice as `LARGE_CHANGE.md` requires.
 Before handoff:
 
 - compare the final diff against every acceptance criterion;
+- answer the six quality questions in the handoff, one line each with evidence: is it the safest
+  way; is it efficient on hot paths; what else can break (callers, stored data, other platforms,
+  older app versions); which tests release still needs; is it the simplest diff a reviewer or the
+  next developer reads easily; are comments only for the why, and are names clear;
 - confirm no debug artifacts, secrets, unused code, or unexplained TODOs were introduced;
 - ensure relevant tests cover success and material failure/regression behavior;
 - run the agreed checks and record exact results;

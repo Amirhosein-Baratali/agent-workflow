@@ -70,9 +70,9 @@ what changes and why. Cover what is decision-complete, in as few words as possib
 - outcome and scope;
 - evidence/current behavior;
 - assumptions or decisions needed;
-- ordered slices with exact areas/files where known;
-- verification per slice;
-- risks, rollback/compatibility notes, and explicit non-goals;
+- ordered slices with exact areas/files where known, each with its verification;
+- risks via the six quality questions in `IMPLEMENTATION.md` (safety, performance, other parts
+  affected, tests before release, simplicity, comments and names), rollback, and non-goals;
 - that execution awaits the user's approval.
 
 Include an item only when it carries a real decision for this change; a small plan is a few lines.
