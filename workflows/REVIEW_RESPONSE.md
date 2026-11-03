@@ -24,8 +24,9 @@ For each review comment:
      task scope.
    - **Preference**: style or taste with no authoritative rule behind it. Say so and let the user
      decide.
-   Give the evidence (file:line, rule, or behavior) behind the verdict. If it cannot be decided
-   without running something or asking the reviewer, say that instead of guessing.
+   Give the evidence (file:line, rule, or behavior) behind the verdict. If a claimed bug needs
+   running to decide, write a temporary test of the reviewer's exact scenario, restore the file to
+   match HEAD, and cite the result; never guess.
 
 ## Output per Comment
 
@@ -46,7 +47,10 @@ Each field below is one or two sentences; one comment's response fits in a few l
 - **Simplified:** what they mean.
 - **Why it's wrong:** one or two lines of evidence for the user.
 - **Reply:** a very short, simple, polite reply the user can paste to the reviewer (1-2
-  sentences, pointing at the evidence).
+  sentences, in the reviewer's language, pointing at the evidence). Answer the fix they propose
+  (why it is not needed), not only the symptom.
+
+For an applied fix the reply is just `Done.` (or `انجام شد.`); explain only push-backs.
 
 **Preference:** simplified meaning, a recommendation, and a short reply for either choice.
 
