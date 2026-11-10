@@ -42,4 +42,5 @@ any rule file; describe the trap, not the value.
 1. Propose at most 3 edits, one line each: file, the new or changed text, and what went wrong.
 2. Apply only after the user agrees. Edit the files in `~/agent-workflow/` directly (a project's
    `.agent-profile.md` is a link to its profile there).
-3. Never commit or push the rules repository without a fresh request.
+3. Then commit and push the rules repository at once (the user's standing request): only the rule
+   files you changed, one commit per rule, `git fetch` first, fast-forward push only.
