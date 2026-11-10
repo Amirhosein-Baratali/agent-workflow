@@ -38,7 +38,8 @@ replies, commit reports, and status answers.
 - Persian: when the user asks for Persian or writes in Finglish, answer in Persian script, inline
   in the chat. Start every paragraph and line with U+200F (RLM) so it aligns right; put it after a
   `-`, `#`, `|` or `1.` marker (before one, Markdown stops rendering it) and never in code blocks.
-  Keep English identifiers few, in backticks. No Persian in files unless asked. Never use Finglish.
+  Say tech terms as Persian developers do: Persian (class, memory), English if Persian is forced
+  (load), no word-for-word idioms; code in backticks. No Persian in files unless asked. No Finglish.
 
 A workflow `Output` section lists what must be decided or disclosed, not a layout to fill in.
 
