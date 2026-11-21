@@ -8,21 +8,19 @@ merge unless the user separately authorizes that action.
 1. Identify the intended base/head or exact diff; fetch and diff against `origin/<base>`, since a
    stale local base pulls in already-merged commits. On a re-review, also diff against the commit
    last reviewed: it may have been amended since, so review that delta, not the old verdict.
-2. Read the MR/PR description and linked issue when available. If no direct link exists, look
-   for the task ID in the branch or a task-related comment.
-3. Extract acceptance criteria and non-goals. If the contract is unavailable and expected behavior
-   cannot be established, report the scope gap and do not infer product requirements.
+2. Read the MR/PR description and linked issue (else the task ID in the branch); on a re-review,
+   also every thread and open ask, the pipeline, and commit messages against the project's MR
+   rules. If you cannot read them (no GitLab access), ask the user to paste them or say so.
+3. Extract acceptance criteria and non-goals. If the contract is unavailable, report the scope gap
+   and do not infer product requirements.
 4. Inspect the diff summary and changed files before opening whole files.
 
 ## Explain First, Then Findings
 
-The user must fully understand the change before seeing findings. Review in two steps:
-
-1. **Explain.** In plain words, say what the change does, how the main flow works now (entry point
-   to result), and what changed compared to before. Keep it short; name the key files. Then stop
-   and wait until the user says they understand or asks questions.
-2. **Findings.** Only after that, give the findings below. Skip step 1 only when the user asks
-   for findings directly.
+The user must fully understand the change before seeing findings. First explain in plain words
+what the change does, how the main flow works now (entry point to result), and what changed; keep
+it short and name the key files. Then wait until the user understands or asks questions. Give the
+findings (step 2) only after that, unless the user asks for findings directly.
 
 ## Review in Risk Order
 
