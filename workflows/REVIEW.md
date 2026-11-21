@@ -45,7 +45,9 @@ symptom by lifecycle reasoning. Do not scan unrelated modules or run a full buil
 
 Report a finding only when it is actionable and supported by a concrete triggering scenario.
 Validate it against actual types, call paths, platform behavior, or tests; no speculative "maybe"
-comments. Calling code redundant needs the invariant and the line that establishes it.
+comments. Calling code redundant needs the invariant and the line that establishes it. A
+pre-existing defect the change touches or locks in with a new test is a finding (ask for a ticket),
+not an open question. New tests must meet the project's testing rules (names, stub helpers).
 
 Each finding is a few lines:
 
@@ -69,10 +71,9 @@ other parts affected, tests before release, simplicity, comments and names), ope
 a verification note. With no actionable findings, say so and name coverage gaps; never invent one.
 
 Draft MR/PR comments in English, one at a time for approval: one or two short sentences of why
-and a one-line ask; severity and evidence stay in chat, never in the comment. Name the diff line
-to post on; add a `suggestion:-X+Y` block for small fixes (it only reaches lines next to that
-one). Put the final text on the clipboard with `pbcopy`: copying rendered chat breaks the Markdown.
-Always run it as `LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 pbcopy`, or non-ASCII text is garbled.
+and a one-line ask; severity and evidence stay in chat. Name the diff line to post on; add a
+`suggestion:-X+Y` block for small fixes (it only reaches lines next to that one). Copy the final
+text with `LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 pbcopy` (rendered chat breaks the Markdown).
 
 For an MR/PR readiness review, end with exactly one verdict: **Approve** (no actionable findings),
 **Approve with nits** (only non-blocking P3 improvements), or **Request changes** (any blocking
