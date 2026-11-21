@@ -36,8 +36,10 @@ Start with the change's overall design and highest-risk path, then inspect files
 - performance on hot paths; accessibility and UI state coverage when relevant;
 - tests that prove meaningful success and failure/regression cases.
 
-Trace directly affected contracts, call sites, and tests beyond the diff when needed. Do not scan
-unrelated modules or run a full build by default.
+Trace affected contracts, call sites, and tests beyond the diff. Follow each changed state into
+the UI that renders it, shared components included, and through every re-entry (init, start or
+resume reloads, results arriving mid-load); trace the first frame instead of dismissing a visible
+symptom by lifecycle reasoning. Do not scan unrelated modules or run a full build by default.
 
 ## Finding Quality Bar
 
@@ -57,9 +59,8 @@ maintainability. Keep praise and summaries apart from findings so they do not hi
 
 ## Review Verification
 
-- Run a focused test or static check only when it confirms or refutes a finding, or when asked.
-- Treat passing tests as evidence, not proof that no bug exists.
-- If generated code or environmental limitations prevent inspection, state the residual risk.
+Run a focused test or static check only when it confirms or refutes a finding, or when asked.
+Passing tests are evidence, not proof. If something blocks inspection, state the residual risk.
 
 ## Output
 
