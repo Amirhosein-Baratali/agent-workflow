@@ -31,6 +31,8 @@ work.
 - Avoid signature or constructor changes that ripple into many call sites and tests when a local
   change works.
 - Avoid unrelated cleanup, speculative generalization, and silent scope growth.
+- After a change, search usages and remove code it made obsolete (such as the replaced API's DTO).
+  This is part of the task; do not extend it to pre-existing, unrelated dead code.
 - Implement relevant success, loading, empty, error, retry, cancellation, repeated-action,
   lifecycle, concurrency, compatibility, and accessibility paths—do not add meaningless states.
 - Never suppress failures merely to make checks pass.
