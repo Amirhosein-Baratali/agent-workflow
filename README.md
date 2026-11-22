@@ -65,7 +65,6 @@ It is safe to re-run. It changes only its own marked block in each file and keep
 | Codex | Symlinks `~/.codex/AGENTS.md` to the controller, if `~/.codex` exists | Set up, not tested yet |
 | Antigravity (replaced Gemini CLI on 2026-06-18) | Adds the same import to `~/.gemini/GEMINI.md`, if `~/.gemini` exists | Set up, not tested yet |
 | Domain skills | Installs Google's `android-cli`, `android-intent-security`, and `android-permissions-security` with the Android CLI (if installed), and links five Chris Banes Kotlin/Compose skills from one pinned commit into the Claude Code, Codex, and Antigravity skill folders | Set up |
-| Claude Code git guardrail | Adds `ask` rules to `~/.claude/settings.json`, so Claude asks before `git commit`, `push`, `reset --hard`, `clean`, `stash`, `restore`, `checkout --`, `checkout .`, `rebase`, and `branch -D`, also as `git -C <dir> …`. A backstop only: other spellings (`git -c key=value push`) and bypass permissions mode skip it | Set up, not tested yet |
 | Cursor | Not automatic. Add a User Rule: `Read ~/agent-workflow/AGENTS.md first and follow it.` | Manual |
 | Anything else | Paste [BOOTSTRAP_PROMPT.md](BOOTSTRAP_PROMPT.md) at the start of a session | Manual |
 
@@ -117,7 +116,7 @@ Research shows that long or generic context files raise cost and can lower succe
 ## Uninstall
 
 Delete the `agent-workflow` block from `~/.claude/CLAUDE.md` and `~/.gemini/GEMINI.md`, remove the
-folder from `additionalDirectories` and the git `ask` rules in `~/.claude/settings.json`, delete
+folder from `additionalDirectories` in `~/.claude/settings.json`, delete
 the `~/.codex/AGENTS.md` symlink and the skill links in each tool's `skills/` folder (Google's
 skills: `android skills remove <id>`), and delete each project's `.agent-profile.md` link.
 

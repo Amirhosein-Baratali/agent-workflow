@@ -101,5 +101,5 @@ single MR verdict. They are reference material, not additional instruction files
   continue (2026-11-22).
 - The router stays for process. Skills are added only for focused domain knowledge, pinned, and
   rank as generic external guidance below the profile (2026-11-22).
-- Claude Code ask rules back the no-commit and preserve-work rules; the text rules stay primary
-  (2026-11-22).
+- No Claude Code git ask rules: they prompted on every git command, and the text gates already
+  cover commit, push, and discarding work in every mode, bypass included (2026-11-22).
