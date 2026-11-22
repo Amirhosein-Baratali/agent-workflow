@@ -5,11 +5,15 @@ implementation, and risk-based testing—not as a replacement for them.
 
 ## Contract
 
-- Read the issue or other authoritative product specification when available.
+- Read the issue or other authoritative product specification when available. If the profile
+  names a spec tool (for example OpenSpec), its change folder is the contract and the plan: propose
+  the change there, implement from it, and archive it when done.
 - Extract acceptance criteria, non-goals, affected users/platforms, compatibility constraints, and
   measurable completion evidence.
 - If requirements are unavailable and cannot be established from the explicit request or another
-  authoritative source, stop before implementation and request the missing contract.
+  authoritative source, stop before implementation and build the contract with the user: ask one
+  decision at a time, the next material one, with your recommended answer, then confirm a short
+  summary of the goal, acceptance criteria, and non-goals.
 
 ## State and Interaction Matrix
 

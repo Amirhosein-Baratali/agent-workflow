@@ -2,7 +2,8 @@
 
 Use at the end of a task when the user corrected how you work or rejected an approach, a rule was
 missing, wrong, or ignored and that cost time, or you found a durable, non-obvious fact the next
-session would need. Skip it otherwise.
+session would need. Skip it otherwise. In a retro, also look for a pointer the agent lacked, a
+missing automated check, a costly tool call, and stale rules or ones the model follows anyway.
 
 ## Filter
 
@@ -15,6 +16,11 @@ Keep a candidate only when all of these hold:
 
 Turn a one-off correction into a general rule only when the same cause can recur elsewhere.
 
+## Write
+
+- State the behavior you want, with its trigger. A bare ban keeps the banned idea in view; keep
+  "never" for hard guardrails and pair it with what to do instead.
+
 ## Route
 
 | Learning | Goes to |
@@ -23,7 +29,7 @@ Turn a one-off correction into a general rule only when the same cause can recur
 | A step or trap in one phase (planning, review, testing, ...) | the matching `workflows/*.md` |
 | A project fact, command, convention, or trap | that project's file in `~/agent-workflow/profiles/` |
 | Ticket status, one task's decisions, progress notes | the tool's memory or task notes, never the rules |
-| Something that must never happen | propose a hook or CI check; a text rule is only advisory |
+| A must-never or mechanical rule (naming, banned API, file location) | propose a lint rule, hook, or CI check; text is only advisory |
 
 Do not keep a preference or correction only in tool memory: other tools and checkouts cannot see
 it. Profiles are private and never published. Never put secrets, credentials, or personal data in

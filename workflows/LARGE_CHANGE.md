@@ -17,12 +17,19 @@ auth/security/payments/privacy/concurrency, spans many files, or risks expensive
 
 ## First-Slice Gate
 
-After approval, implement only the selected first slice. Keep the repository usable when feasible,
-run its focused checks, then explain simply what changed, what it proves, the remaining slices,
-and any revised risk. Stop for confirmation.
+After approval, save the plan (contract, slices, decisions, verification) to
+`.agent-plans/<branch>.md` in the checkout, unless a spec tool's change folder already holds it
+(`FEATURE.md`). Record each slice's evidence and next step there, so a fresh session can continue.
+`link-project.sh` git-excludes `.agent-plans/`; if `git status` shows it, add `/.agent-plans/` to
+the file that `git rev-parse --git-path info/exclude` prints.
+
+Then implement only the selected first slice. Keep the repository usable when feasible, run its
+focused checks, then explain simply what changed, what it proves, the remaining slices, and any
+revised risk. Stop for confirmation.
 
 Continue remaining slices only after confirmation. Re-plan when evidence changes scope, design,
 compatibility, or risk. Approval of the overall plan does not waive the first-slice checkpoint.
 
 Before final handoff, run the wider gates justified by the completed cross-cutting risk and provide
-a migration/rollback note where relevant.
+a migration/rollback note where relevant. Offer a 3-question multiple-choice check of the key
+decisions (Philipp Lackner's PR quiz), so the user can own code they did not write.

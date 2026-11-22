@@ -1,6 +1,6 @@
 # Research Basis
 
-Reviewed: 2026-09-02. Updated: 2026-10-20.
+Reviewed: 2026-09-02. Updated: 2026-11-22.
 
 This pack synthesizes compatible principles; it does not copy any vendor's entire workflow. The
 project profile and repository evidence override generic recommendations.
@@ -35,6 +35,21 @@ single MR verdict. They are reference material, not additional instruction files
 - [Eric J. Ma: How to build self-improving coding agents](https://ericmjl.github.io/blog/2026/1/17/how-to-build-self-improving-coding-agents-part-1/): agents improve when you change their environment (instruction files, skills), not their weights.
 - [On the Fragility of Self-Improving Agents (arXiv 2608.18066)](https://arxiv.org/pdf/2608.18066): self-improvement results vary with run order and underspecified tasks, so learned rules need a filter, size limits, and human approval.
 - [Simon Willison: Agentic Engineering Patterns](https://simonwillison.net/2026/Feb/23/agentic-engineering-patterns/): agentic engineering is professionals amplifying their expertise with agents while still owning and reviewing the code.
+
+## 2026-11 Update: Verification, Evidence-Based Review, Curated Skills
+
+- [Anthropic: How the Claude Code team thinks about verification (2026-11-16)](https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/): running the change end to end matters more than tests; after three failed fix rounds the agent stops and brings in a person; a reliability checklist fires on diff triggers; a change must not modify the checks that judge it; flaky tests get a root cause, never retries or sleeps; rules are pruned on a routine.
+- [Anthropic: How the Claude Code team does code review (2026-10-15)](https://claude.dev/blog/solving-code-review-at-anthropic/): review the evidence instead of every line; tag findings Important, Nit, or Pre-existing; cap review rounds, re-review only the new diff, flag the bug class, never repeat findings; people keep direction, risky code, and reading the evidence.
+- [Anthropic: Building verification loops in Claude Code with skills (2026-07-22)](https://claude.com/resources/articles/building-verification-loops-in-claude-code-with-skills): turn repeated manual checks into verification skills that run standalone, embedded, chained, or on every PR.
+- [Claude Code best practices (2026-11)](https://code.claude.com/docs/en/best-practices): give the agent a pass/fail check it can run; interview the user into a spec, then build it in a fresh session.
+- [Claude Code permissions (2026-11)](https://code.claude.com/docs/en/permissions): ask rules match every subcommand and past leading variable assignments; bypass permissions mode skips prompts.
+- [Matt Pocock: skills](https://github.com/mattpocock/skills): `diagnosing-bugs` (build a red-capable feedback loop first), `tdd` (no tautological tests), `writing-for-agents` (state the wanted behavior, cut no-ops, one source of truth), `retro` (mechanical mistakes become checks).
+- [Jesse Vincent: Superpowers](https://github.com/obra/superpowers): `verification-before-completion` (no claim without a fresh run) and `receiving-code-review` (clarify unclear items before fixing any). Its always-on "Iron Law" style was not adopted: long, negative, and it would compete with the router.
+- [Chris Banes: skills](https://github.com/chrisbanes/skills) and [Google: android/skills](https://github.com/android/skills): focused Kotlin, Compose, and Android domain skills, installed pinned. Their process skills (`to-plan`, `deliver-issue`, `shepherd`) were left out because they compete with this pack's gates.
+- [Philipp Lackner: spec-driven development with OpenSpec](https://www.youtube.com/watch?v=9MImID9o8MQ), [reliable agent skills (2026-09-27)](https://www.youtube.com/watch?v=tJDubU8tpso), and [PR quizzes for AI code (2026-10)](https://www.youtube.com/watch?v=5sz5YywkMcE): keep context in specs, not sessions; build and test skills with skill-creator; quiz reviewers so they understand AI-written code. His public repos carry no agent rules, and his free skills need an email sign-up.
+- [Vercel: AGENTS.md outperforms skills in our agent evals (2026-01-27)](https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals): an always-loaded docs index passed 100% of tasks against 79% for skills, and agents skipped the skill in 56% of runs. Supports keeping the router for process.
+- [SkillsBench (arXiv 2602.12670, v4)](https://arxiv.org/abs/2602.12670): curated skills raise pass rates by 16.6 points on average; focused skills of at most three modules beat exhaustive bundles.
+- [Antigravity customization discovery](https://antigravity.google/docs/customization-discovery/): Antigravity CLI replaced Gemini CLI on 2026-06-18; it still reads `~/.gemini/GEMINI.md`, and personal skills live in `~/.gemini/config/skills/`.
 
 ## Human Understanding and Accountability
 
@@ -76,3 +91,15 @@ single MR verdict. They are reference material, not additional instruction files
   limits and with the user's approval (2026-10-20).
 - Repeated user corrections became rules: smallest diff and few tests, fetch shared branches
   first, reuse existing events and controls, respect declined options (2026-10-20).
+- Verification means running the change: plans for user-visible changes include an approved
+  end-to-end run, and each profile names its Verify recipe (2026-11-22).
+- Diagnosis starts with a feedback loop that fails on the bug; a fix shows its regression test
+  failing before it passes (2026-11-22).
+- Reviews check scope creep and loosened checks, apply only the profile risks a diff triggers, give
+  each finding once, and suggest rethinking after three rounds (2026-11-22).
+- Large work keeps its approved plan in a git-excluded `.agent-plans/` file, so a fresh session can
+  continue (2026-11-22).
+- The router stays for process. Skills are added only for focused domain knowledge, pinned, and
+  rank as generic external guidance below the profile (2026-11-22).
+- Claude Code ask rules back the no-commit and preserve-work rules; the text rules stay primary
+  (2026-11-22).

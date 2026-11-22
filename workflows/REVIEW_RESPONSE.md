@@ -24,6 +24,8 @@ For each review comment:
      task scope.
    - **Preference**: style or taste with no authoritative rule behind it. Say so and let the user
      decide.
+   - **Unclear**: two readings are possible. Draft a one-line question for the reviewer and plan
+     no fix until it is answered; related comments may depend on it.
    Give the evidence (file:line, rule, or behavior) behind the verdict. If a claimed bug needs
    running to decide, write a temporary test of the reviewer's exact scenario, restore the file to
    match HEAD, and cite the result; never guess.
@@ -53,6 +55,8 @@ Each field below is one or two sentences; one comment's response fits in a few l
 For an applied fix the reply is just `Done.` (or `انجام شد.`); explain only push-backs.
 
 **Preference:** simplified meaning, a recommendation, and a short reply for either choice.
+
+**Unclear:** both readings and the question to send the reviewer.
 
 ## Wrap-up
 

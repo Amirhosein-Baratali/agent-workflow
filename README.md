@@ -49,7 +49,8 @@ Then link each project checkout to its profile, once per checkout:
 ```
 
 If the profile does not exist yet, the script creates it from the template. Fill it in, or ask
-your agent to draft it from the repository and review the result.
+your agent to draft it from the repository and review the result. The script also git-excludes
+`.agent-plans/`, where large tasks keep their approved plan.
 
 Moving to another computer by copying the folder works too, and brings your private profiles
 along. Run `install.sh` once there, then `link-project.sh` in each checkout.
@@ -62,7 +63,9 @@ It is safe to re-run. It changes only its own marked block in each file and keep
 |---|---|---|
 | Claude Code | Adds `@~/agent-workflow/AGENTS.md` to `~/.claude/CLAUDE.md`, and adds the folder to `permissions.additionalDirectories` in `~/.claude/settings.json`, so Claude reads and edits the rules without permission prompts | Used daily |
 | Codex | Symlinks `~/.codex/AGENTS.md` to the controller, if `~/.codex` exists | Set up, not tested yet |
-| Gemini CLI / Antigravity | Adds the same import to `~/.gemini/GEMINI.md`, if `~/.gemini` exists | Set up, not tested yet |
+| Antigravity (replaced Gemini CLI on 2026-06-18) | Adds the same import to `~/.gemini/GEMINI.md`, if `~/.gemini` exists | Set up, not tested yet |
+| Domain skills | Installs Google's `android-cli`, `android-intent-security`, and `android-permissions-security` with the Android CLI (if installed), and links five Chris Banes Kotlin/Compose skills from one pinned commit into the Claude Code, Codex, and Antigravity skill folders | Set up |
+| Claude Code git guardrail | Adds `ask` rules to `~/.claude/settings.json`, so Claude asks before `git commit`, `push`, `reset --hard`, `clean`, `stash`, `restore`, `checkout --`, `checkout .`, `rebase`, and `branch -D`, also as `git -C <dir> …`. A backstop only: other spellings (`git -c key=value push`) and bypass permissions mode skip it | Set up, not tested yet |
 | Cursor | Not automatic. Add a User Rule: `Read ~/agent-workflow/AGENTS.md first and follow it.` | Manual |
 | Anything else | Paste [BOOTSTRAP_PROMPT.md](BOOTSTRAP_PROMPT.md) at the start of a session | Manual |
 
@@ -80,6 +83,7 @@ workflows/             one file per phase, loaded only when needed
 templates/PROJECT_PROFILE.md
 profiles/              your private project profiles (git-ignored, never pushed)
 install.sh  link-project.sh  lib.sh
+vendor/                pinned third-party skills that install.sh fetches (git-ignored)
 SOURCES.md             research behind the rules
 BOOTSTRAP_PROMPT.md
 ```
@@ -113,8 +117,9 @@ Research shows that long or generic context files raise cost and can lower succe
 ## Uninstall
 
 Delete the `agent-workflow` block from `~/.claude/CLAUDE.md` and `~/.gemini/GEMINI.md`, remove the
-folder from `additionalDirectories` in `~/.claude/settings.json`, delete the `~/.codex/AGENTS.md`
-symlink, and delete each project's `.agent-profile.md` link.
+folder from `additionalDirectories` and the git `ask` rules in `~/.claude/settings.json`, delete
+the `~/.codex/AGENTS.md` symlink and the skill links in each tool's `skills/` folder (Google's
+skills: `android skills remove <id>`), and delete each project's `.agent-profile.md` link.
 
 ## License
 

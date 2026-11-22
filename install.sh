@@ -34,11 +34,20 @@ allowed = data.setdefault("permissions", {}).setdefault("additionalDirectories",
 for d in dict.fromkeys(dirs):
     if d not in allowed:
         allowed.append(d)
+# Guardrail for the AGENTS.md gates: ask before git commands that commit, publish, or discard work.
+ask = data["permissions"].setdefault("ask", [])
+for sub in ("commit", "push", "reset --hard", "clean", "stash", "restore", "checkout --",
+            "checkout .", "rebase", "branch -D"):
+    # A rule with two wildcards skips the bare command, so `git -C <dir>` needs both forms.
+    for rule in (f"Bash(git {sub} *)", f"Bash(git -C * {sub} *)", f"Bash(git -C * {sub})"):
+        if rule not in ask:
+            ask.append(rule)
 with open(path, "w") as f:
     json.dump(data, f, indent=2)
     f.write("\n")
 PY
   echo "Claude Code: $SETTINGS allows $AW_REPO (backup: settings.json.bak)"
+  echo "Claude Code: asks before git commit, push, and commands that discard work"
 else
   echo "python3 not found. Add this to $SETTINGS by hand:"
   echo "  {\"permissions\": {\"additionalDirectories\": [\"$AW_REPO\"]}}"
@@ -63,6 +72,9 @@ if [ -d "$HOME/.gemini" ]; then
     "@~/agent-workflow/AGENTS.md"
   echo "Gemini/Antigravity: ~/.gemini/GEMINI.md imports the controller"
 fi
+
+# 5. Focused domain skills for Claude Code, Codex, and Antigravity (see install_skills in lib.sh).
+install_skills
 
 echo
 echo "Done. Link each project to its profile once per checkout:"

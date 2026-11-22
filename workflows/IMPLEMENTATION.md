@@ -35,7 +35,8 @@ work.
   This is part of the task; do not extend it to pre-existing, unrelated dead code.
 - Implement relevant success, loading, empty, error, retry, cancellation, repeated-action,
   lifecycle, concurrency, compatibility, and accessibility paths—do not add meaningless states.
-- Never suppress failures merely to make checks pass.
+- Never suppress failures or loosen the checks that judge the change (delete or weaken a test,
+  add a lint suppression, narrow a CI filter) to get green, unless the task asks for it.
 - Do not modify generated/vendor files unless the project workflow requires it.
 
 If the plan becomes invalid, pause, present the evidence, and propose a revised plan. Do not force
@@ -70,6 +71,7 @@ Before handoff:
 - confirm no debug artifacts, secrets, unused code, or unexplained TODOs were introduced;
 - ensure relevant tests cover success and material failure/regression behavior;
 - run the agreed checks and record exact results;
+- treat a subagent's or tool's "done" as a claim until its diff and output confirm it;
 - inspect working-tree state and separate unrelated pre-existing changes in the report;
 - for large or high-risk work, offer an independent review of the final diff in a fresh context
   (a review subagent or review command), told to flag only correctness and requirement gaps so it

@@ -2,3 +2,5 @@
 profiles/*
 !profiles/README.md
 .DS_Store
+# Pinned third-party skills, fetched by install.sh.
+vendor/

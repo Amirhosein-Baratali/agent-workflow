@@ -22,8 +22,9 @@ echo "Linked $PROJECT/.agent-profile.md -> profiles/$NAME.md"
 
 if git -C "$PROJECT" rev-parse --git-dir >/dev/null 2>&1; then
   EXCLUDE="$(git -C "$PROJECT" rev-parse --path-format=absolute --git-common-dir)/info/exclude"
-  write_block "$EXCLUDE" "# >>> agent-workflow >>>" "# <<< agent-workflow <<<" "/.agent-profile.md"
-  echo "Git: $EXCLUDE ignores the link"
+  write_block "$EXCLUDE" "# >>> agent-workflow >>>" "# <<< agent-workflow <<<" \
+    $'/.agent-profile.md\n/.agent-plans/'
+  echo "Git: $EXCLUDE ignores the link and .agent-plans/"
 fi
 
 for old in AGENTS.md CLAUDE.md GEMINI.md agent-workflow; do

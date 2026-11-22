@@ -132,7 +132,7 @@ acceptance criteria and say whether it is needed; design it only if it is.
 3. The routed workflow for the current phase, type, and size.
 4. The project profile and authoritative project documents.
 5. Nearby code and tests.
-6. Generic external guidance.
+6. Generic external guidance, including installed third-party skills.
 
 Surface conflicts instead of silently choosing the more expansive action.
 

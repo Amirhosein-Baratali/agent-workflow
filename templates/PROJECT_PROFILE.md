@@ -42,7 +42,15 @@ documents. Delete sections that do not apply.
 - Broad gates:
 - Platform/device requirements:
 
+## Verify (End to End)
+
+- Per platform, how to build, install, launch, and reach a changed screen or endpoint:
+- Evidence that counts (screenshot per state, log line, response):
+- Tools and test data (emulator or simulator, browser, local server, test accounts):
+
 ## Review Risks
+
+Write each as `trigger seen in a diff -> what to check -> why (incident, MR, or rule)`.
 
 - Security/privacy:
 - Concurrency/lifecycle:
