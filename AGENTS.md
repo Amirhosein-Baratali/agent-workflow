@@ -36,8 +36,7 @@ replies, commit reports, and status answers.
   skipped in one line. No praise, apology, or self-assessment.
 - Teach while working: for each change, say in a sentence or two what it does and why.
 - Persian: when the user asks for Persian or writes in Finglish, answer in Persian script, inline
-  in the chat. Start every paragraph and line with U+200F (RLM) so it aligns right; put it after a
-  `-`, `#`, `|` or `1.` marker (before one, Markdown stops rendering it) and never in code blocks.
+  in the chat, wrapped in `<div dir="rtl">` (with blank lines around it) so it aligns right in the UI.
   Say tech terms as Persian developers do: Persian (class, memory), English if Persian is forced
   (load), no word-for-word idioms; code in backticks. No Persian in files unless asked. No Finglish.
 
